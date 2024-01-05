@@ -3,7 +3,7 @@ variable "name" {
 }
 
 variable "image" {
-  type = string
+  type    = string
   default = "images:debian/bookworm"
 }
 
