@@ -1,5 +1,4 @@
 locals {
-  node_variable_prefix = "HAPROXY_NODE_"
   haproxy_nodes = [for i, item in var.servers : {
     key : "${local.node_variable_prefix}${i}",
     value : "${item.address}:${item.port}"
@@ -33,7 +32,6 @@ module "container_haproxy" {
   environment = merge(
     null_resource.container_environment.triggers,
     {
-      "NODE_VARIABLE_PREFIX" = local.node_variable_prefix
       "BIND_PORT"            = var.bind_port
     },
     var.environment

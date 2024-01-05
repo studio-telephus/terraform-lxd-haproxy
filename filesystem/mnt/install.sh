@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-: "${NODE_VARIABLE_PREFIX?}"
 : "${BIND_PORT?}"
 
 # env > /tmp/env.out
 
 NODE_ARRAY=()
-for pair in "${!$NODE_VARIABLE_PREFIX@}"; do
+for pair in "${!HAPROXY_NODE_@}"; do
   n=${!pair}
   if [ ! -z "$n" ]; then
     NODE_ARRAY+=($n)
