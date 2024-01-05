@@ -1,6 +1,6 @@
 locals {
   haproxy_nodes = [for i, item in var.servers : {
-    key : "${local.node_variable_prefix}${i}",
+    key : "HAPROXY_NODE_${i}",
     value : "${item.address}:${item.port}"
   }]
 }
