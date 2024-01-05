@@ -4,26 +4,11 @@ variable "name" {
 
 variable "image" {
   type = string
+  default = "images:debian/bookworm"
 }
 
 variable "profiles" {
   type    = list(string)
-  default = []
-}
-
-variable "nic" {
-  type = object({
-    name       = string
-    properties = map(string)
-  })
-}
-
-variable "volumes" {
-  type = list(object({
-    pool        = string
-    volume_name = string
-    path        = string
-  }))
   default = []
 }
 
@@ -39,7 +24,12 @@ variable "mount_dirs" {
 
 variable "exec_enabled" {
   type    = bool
-  default = false
+  default = true
+}
+
+variable "exec" {
+  type    = string
+  default = "/mnt/install.sh"
 }
 
 variable "local_exec_interpreter" {
@@ -54,11 +44,6 @@ variable "environment" {
 
 variable "nicparent" {
   type = string
-}
-
-variable "exec" {
-  type    = string
-  default = "/mnt/install.sh"
 }
 
 variable "nicname" {
