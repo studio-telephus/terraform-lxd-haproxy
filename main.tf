@@ -32,7 +32,9 @@ module "container_haproxy" {
   environment = merge(
     null_resource.container_environment.triggers,
     {
-      "BIND_PORT"            = var.bind_port
+      "BIND_PORT"                   = var.bind_port
+      "HAPROXY_STATS_AUTH_USERNAME" = var.stats_auth_username
+      "HAPROXY_STATS_AUTH_PASSWORD" = var.stats_auth_password
     },
     var.environment
   )

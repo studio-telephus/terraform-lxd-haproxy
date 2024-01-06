@@ -70,3 +70,13 @@ variable "servers" {
     port    = string
   }))
 }
+
+variable "stats_auth_username" {
+  type    = string
+  default = "haproxy-stats"
+}
+
+variable "stats_auth_password" {
+  type      = string
+  sensitive = true
+}
