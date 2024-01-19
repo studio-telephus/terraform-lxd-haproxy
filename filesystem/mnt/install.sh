@@ -24,6 +24,9 @@ server_node_lines=$(
   done
 )
 
+apt-get update
+apt-get install -y openssl net-tools
+
 cat >/tmp/my-haproxy-tcp-passthrough.cfg.append <<EOF
 listen my-haproxy-tcp-passthrough
   bind :$BIND_PORT
@@ -62,8 +65,7 @@ listen my-haproxy-http-stats
   stats uri /server-status
 EOF
 
-apt-get update
-apt-get install -y openssl net-tools haproxy
+apt-get install -y haproxy
 
 if [ ! -f "/etc/haproxy/haproxy.cfg.orig" ]
 then
